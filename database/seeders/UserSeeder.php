@@ -14,6 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        $users = User::factory(10)->create();
+
+        $roles = Role::all();
+
+        foreach ($users as $user) 
+        {
+            $randomRoles = $roles->random()->id;
+            $user->roles()->attach($randomRoles);
+        }
     }
 }

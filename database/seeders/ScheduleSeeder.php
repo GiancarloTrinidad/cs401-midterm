@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Schedule;
+use App\Models\Course;
 
 class ScheduleSeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class ScheduleSeeder extends Seeder
      */
     public function run(): void
     {
-        Schedule::factory(10)->create();
+        $courses = Course::all();
+
+        foreach ($courses as $course) 
+        {
+            Schedule::factory()->create([
+                'course_id' => $course
+            ]);
+        }
     }
 }

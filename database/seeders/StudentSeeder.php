@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Course;
 
 class StudentSeeder extends Seeder
 {
@@ -14,13 +15,17 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
+        $courses = Course::all();
         $users = User::all();
 
         foreach ($users->take(5) as $user) 
         {
-            Student::factory()->create([
+            $student = Student::factory()->create([
                 'user_id' => $user
             ]);
+
+            $randomCourseId = $courses->random()->id;
+            $student->courses()->attach($randomCourseId);
         }
     }
 }

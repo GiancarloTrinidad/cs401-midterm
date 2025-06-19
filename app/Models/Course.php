@@ -23,7 +23,7 @@ class Course extends Model
 
     public function schedules(): HasMany
     {
-        return $this->hasMany(Schedule::class, 'schedule_id');
+        return $this->hasMany(Schedule::class);
     }
 
     public function teacher(): BelongsTo
@@ -33,6 +33,6 @@ class Course extends Model
 
     public function students(): BelongsToMany
     {
-        return $this->belongsToMany(Student::class, 'student_id');
+        return $this->belongsToMany(Student::class, 'student_course');
     }
 }

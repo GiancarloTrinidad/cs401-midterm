@@ -14,7 +14,7 @@ class CourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $teachers = Teacher::all()
+        $teachers = Teacher::all();
 
         foreach ($teachers as $teacher)
         {

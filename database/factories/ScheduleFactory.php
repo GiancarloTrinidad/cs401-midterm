@@ -18,7 +18,7 @@ class ScheduleFactory extends Factory
     {
         return [
             'day_of_week' => fake()->dayOfWeek(),
-            'time_slot' => fake()->time(),
+            'time_slot' => fake()->dateTime(),
             'room' => rand(1, 33),
             'term' => rand(1, 4)
         ];
